@@ -40,14 +40,14 @@
             animation: swing 4s infinite ease-in-out; transform-origin: top;
         }
         .marigold {
-            width: 32px; height: 32px; /* Slimmer size */
+            width: 32px; height: 32px;
             background: radial-gradient(circle, #ffcc00 0%, #ff9933 60%, #e67e22 100%);
             border-radius: 50%;
             box-shadow: inset 0 0 5px rgba(0,0,0,0.2), 1px 2px 4px rgba(0,0,0,0.3);
             position: relative;
         }
         .mango-leaf {
-            width: 12px; height: 35px; /* Slimmer leaf */
+            width: 12px; height: 35px;
             background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
             border-radius: 0 100% 0 100%;
             margin-top: -5px; box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
@@ -70,7 +70,6 @@
         .hero-shlok {
             font-family: 'Playfair Display', serif; font-size: 1.2rem;
             color: var(--silk-gold); margin-bottom: 25px; letter-spacing: 3px;
-            opacity: 0.9;
         }
 
         /* --- EXCLUSIVE NAME STYLE --- */
@@ -96,20 +95,7 @@
         .hero h2 {
             font-family: 'Pinyon Script', cursive;
             font-size: 2.8rem; color: white; margin-top: -10px;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
-
-        /* --- ANIMATED TEXT REVEAL --- */
-        .text-reveal {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid var(--zari-gold);
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-            margin: 0 auto; letter-spacing: 5px; text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--zari-gold); } }
 
         /* --- ITINERARY CARDS --- */
         .itinerary-section { padding: 100px 20px; max-width: 1200px; margin: auto; }
@@ -121,7 +107,6 @@
             border: 1px solid var(--zari-gold);
             transition: 0.5s transform ease;
         }
-        .event-card:hover { transform: scale(1.02); }
 
         .date-box {
             background: var(--royal-maroon); color: var(--zari-gold);
@@ -154,19 +139,18 @@
         @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
 
         @media (max-width: 768px) {
-            .event-card { flex-direction: column; box-shadow: 10px 10px 0px var(--kumkum); }
+            .event-card { flex-direction: column; }
             .date-box { padding: 30px; }
             .details-box { padding: 30px; }
-            .details-box h4 { font-size: 2rem; }
             .exclusive-name { font-size: 3.5rem; }
         }
     </style>
 </head>
-<body onclick="startAudio()" onscroll="startAudio()">
+<body>
 
-    <audio id="weddingMusic" loop>
-        <!-- Place your local shlok.mp3 or sitar track here -->
-        <source src="https://www.srimadbhagavadgita.org/music/gita-shlokas.mp3" type="audio/mpeg">
+    <!-- TRADITIONAL WEDDING AUDIO (Shehnai/Instrumental) -->
+    <audio id="weddingMusic" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
     </audio>
 
     <div class="music-btn" onclick="toggleMusic()">
@@ -186,7 +170,7 @@
 
         <p class="hero-shlok" data-aos="fade-down" data-aos-duration="1500">|| श्री गणेशाय नमः ||</p>
         
-        <div class="text-reveal">The Royal Union of</div>
+        <p style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem;" data-aos="fade-up">The Royal Union of</p>
         
         <h1 class="exclusive-name" data-aos="zoom-in" data-aos-duration="2500">Parth & Anveshi</h1>
         <h2 data-aos="fade-up" data-aos-delay="800">Wedding Invitation</h2>
@@ -205,9 +189,9 @@
                 <h3>07</h3>
                 <p>SATURDAY</p>
             </div>
-            <div class="details-box" data-aos="fade-left" data-aos-delay="300">
+            <div class="details-box">
                 <h4>Kirtan</h4>
-                <p>Seeking the blessings of the Almighty as we begin our holy union with sacred chants and spiritual harmony.</p>
+                <p>Invoking divine blessings as we begin our holy union with sacred melodies and spiritual harmony.</p>
                 <div style="margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; gap: 40px;">
                     <div><b style="color: var(--kumkum); display: block;">Timing</b> 4:00 PM onwards</div>
                     <div><b style="color: var(--kumkum); display: block;">Venue</b> 48 Savita Vihar, Delhi</div>
@@ -222,9 +206,9 @@
                 <h3>10</h3>
                 <p>TUESDAY</p>
             </div>
-            <div class="details-box" data-aos="fade-left" data-aos-delay="300">
+            <div class="details-box">
                 <h4>Mehendi Ceremony</h4>
-                <p>An evening of vibrant colors, traditional music, and dance. Let the colors of love flourish on our hands.</p>
+                <p>An evening of vibrant colors and traditional music. Let the colors of love flourish on our hands.</p>
                 <div style="margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; gap: 40px;">
                     <div><b style="color: var(--kumkum); display: block;">Timing</b> 6:00 PM onwards</div>
                     <div><b style="color: var(--kumkum); display: block;">Venue</b> 48 Savita Vihar, Delhi</div>
@@ -239,9 +223,9 @@
                 <h3>11</h3>
                 <p>WEDNESDAY</p>
             </div>
-            <div class="details-box" data-aos="fade-left" data-aos-delay="300">
+            <div class="details-box">
                 <h4>Cocktail Night</h4>
-                <p>A toast to the future! Join us for a glamorous night of celebration, music, and endless joy.</p>
+                <p>A toast to the future! Join us for a night of glitz, glamour, and endless celebration.</p>
                 <div style="margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; gap: 40px;">
                     <div><b style="color: var(--kumkum); display: block;">Timing</b> 8:00 PM onwards</div>
                     <div><b style="color: var(--kumkum); display: block;">Venue</b> East End Club, Delhi</div>
@@ -250,7 +234,7 @@
         </div>
 
         <!-- THE WEDDING DAY -->
-        <div class="event-card" data-aos="zoom-in" style="box-shadow: 20px 20px 0px var(--zari-gold); border-color: var(--kumkum);">
+        <div class="event-card" data-aos="zoom-in" style="box-shadow: 20px 20px 0px var(--zari-gold);">
             <div class="date-box" style="background: var(--zari-gold); color: var(--royal-maroon);">
                 <p>MARCH</p>
                 <h3>12</h3>
@@ -269,7 +253,7 @@
                 </div>
 
                 <div style="background: var(--royal-maroon); color: white; padding: 30px; border-radius: 15px; border: 2px solid var(--zari-gold);">
-                    <h5 style="font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--zari-gold); margin-bottom: 5px;">Shubh Vivah</h5>
+                    <h5 style="font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--zari-gold);">Shubh Vivah</h5>
                     <p style="font-weight: 700; font-size: 1.4rem;">9:30 PM Onwards</p>
                     <p style="margin-top: 5px; opacity: 0.8;">Oodles by Bella Monde, Chattarpur, New Delhi</p>
                 </div>
@@ -278,10 +262,11 @@
     </section>
 
     <footer style="padding: 100px 20px; text-align: center; background: var(--royal-maroon); color: var(--zari-gold);">
-        <h2 style="font-family: 'Pinyon Script'; font-size: 4.5rem; margin-bottom: 10px;" data-aos="fade-up">Parth & Anveshi</h2>
-        <p style="letter-spacing: 5px; opacity: 0.6; text-transform: uppercase; font-size: 0.8rem;">#ParthAnveshiTogether</p>
+        <h2 style="font-family: 'Pinyon Script'; font-size: 4.5rem; margin-bottom: 10px;">Parth & Anveshi</h2>
+        <p style="letter-spacing: 5px; opacity: 0.6; text-transform: uppercase;">#ParthAnveshiTogether</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true });
@@ -290,14 +275,21 @@
         const mIcon = document.getElementById('music-icon');
         let isStarted = false;
 
-        function startAudio() {
+        // --- THE AUTO-PLAY ON SCROLL LOGIC ---
+        function handleAutoPlay() {
             if (!isStarted) {
                 music.play().then(() => {
                     mIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
                     isStarted = true;
+                }).catch(error => {
+                    console.log("Autoplay prevented. User must interact.");
                 });
             }
         }
+
+        // Listen for scroll and click to trigger music
+        window.addEventListener('scroll', handleAutoPlay, { once: true });
+        window.addEventListener('click', handleAutoPlay, { once: true });
 
         function toggleMusic() {
             if (music.paused) {
@@ -309,6 +301,7 @@
             }
         }
 
+        // Petals logic
         const container = document.getElementById('petal-container');
         function createPetal() {
             const petal = document.createElement('div');
