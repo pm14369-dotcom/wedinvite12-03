@@ -1,337 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parth & Anveshi | The Grand Royal Wedding</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parth & Anveshi | The Grand Royal Wedding</title>
 
-    <!-- Premium Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <style>
-        :root {
-            --royal-maroon: #540202;
-            --kumkum: #7a0000;
-            --zari-gold: #d4af37;
-            --gold-gradient: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            --cream: #fffcf5;
-        }
+<style>
+:root {
+--royal-maroon:#540202;
+--kumkum:#7a0000;
+--zari-gold:#d4af37;
+--cream:#fffcf5;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body {
+font-family:'Montserrat',sans-serif;
+background-color:var(--cream);
+margin:0;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--cream);
-            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-            color: #222;
-            overflow-x: hidden;
-        }
+.hero{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url('couple.JPG') center/cover;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
 
-        /* --- PETAL SHOWER --- */
-        #petal-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
-        .petal { position: absolute; background: #ffb7c5; border-radius: 150% 0 150% 0; opacity: 0.6; animation: fall linear infinite; }
-        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+.exclusive-name{
+font-family:'Cinzel Decorative';
+font-size:clamp(3rem,8vw,6rem);
+background:linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fbf5b7,#aa771c);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('couple.JPG') center/cover no-repeat;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            color: white; text-align: center; border-bottom: 8px double var(--zari-gold);
-            position: relative;
-        }
+.itinerary-section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
 
-        .exclusive-name {
-            font-family: 'Cinzel Decorative';
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 900;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 10px 0;
-            filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
-        }
+.event-card{
+background:white;
+margin-bottom:60px;
+border-radius:12px;
+display:flex;
+flex-wrap:wrap;
+overflow:hidden;
+box-shadow:15px 15px 0 var(--kumkum);
+}
 
-        /* --- COUNTDOWN --- */
-        .countdown { display: flex; gap: 15px; margin-top: 20px; }
-        .count-box { background: rgba(255,255,255,0.1); border: 1px solid var(--zari-gold); padding: 10px; border-radius: 8px; min-width: 70px; backdrop-filter: blur(5px); }
-        .count-box span { display: block; font-size: 1.5rem; font-weight: 700; color: var(--zari-gold); }
-        .count-box label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+.date-box{
+background:var(--royal-maroon);
+color:var(--zari-gold);
+padding:40px;
+min-width:250px;
+text-align:center;
+}
 
-        /* --- ITINERARY --- */
-        .itinerary-section { padding: 100px 20px; max-width: 1100px; margin: auto; }
-        .event-card {
-            background: white; margin-bottom: 60px; border-radius: 15px;
-            display: flex; flex-wrap: wrap; overflow: hidden;
-            box-shadow: 15px 15px 0 var(--kumkum); border: 1px solid var(--zari-gold);
-            transition: 0.3s transform;
-        }
-        .event-card:hover { transform: translateY(-5px); }
-        .date-box {
-            background: var(--royal-maroon); color: var(--zari-gold);
-            padding: 40px; min-width: 240px; text-align: center;
-            border-right: 4px double var(--zari-gold);
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .date-box h3 { font-family: 'Cinzel Decorative'; font-size: 4rem; line-height: 1; }
-        .date-box p { font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
-        .details-box { padding: 40px; flex: 1; }
-        .details-box h4 { font-family: 'Cinzel Decorative'; font-size: 2.2rem; color: var(--royal-maroon); }
+.details-box{
+padding:40px;
+flex:1;
+}
 
-        /* --- POV SECTION --- */
-        .pov-section { padding: 100px 20px; text-align: center; background: #fffdf9; border-top: 2px solid var(--zari-gold); }
-        .pov-section h2 { font-family: 'Cinzel Decorative'; font-size: 3rem; color: var(--royal-maroon); margin-bottom: 15px; }
-        
-        .upload-container {
-            background: white; padding: 40px; border-radius: 15px;
-            max-width: 600px; margin: 30px auto;
-            border: 2px dashed var(--zari-gold);
-        }
-        .upload-btn {
-            background: var(--kumkum); color: var(--zari-gold);
-            padding: 15px 40px; border: none; border-radius: 50px;
-            font-weight: 700; cursor: pointer; transition: 0.3s;
-            margin-top: 15px; text-transform: uppercase; letter-spacing: 2px;
-        }
-        .upload-btn:hover { background: var(--royal-maroon); transform: scale(1.05); }
+/* POV SECTION */
+.pov-section{
+padding:100px 20px;
+text-align:center;
+background:white;
+}
 
-        #gallery {
-            margin-top: 60px; display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px; padding: 10px;
-        }
-        .gallery-item {
-            background: white; padding: 15px; border-radius: 5px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: rotate(calc(-2deg + Math.random() * 4deg));
-            transition: 0.3s;
-        }
-        .gallery-item:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
-        .gallery-item img { width: 100%; height: 300px; object-fit: cover; border-radius: 3px; }
+.pov-section h2{
+font-family:'Cinzel Decorative';
+font-size:3rem;
+color:var(--royal-maroon);
+margin-bottom:40px;
+}
 
-        /* --- MUSIC TOGGLE --- */
-        .music-control {
-            position: fixed; bottom: 30px; right: 30px; z-index: 10005;
-            width: 60px; height: 60px; background: var(--kumkum);
-            border-radius: 50%; display: flex; justify-content: center;
-            align-items: center; cursor: pointer; border: 2px solid var(--zari-gold);
-            color: var(--zari-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
+.upload-btn{
+background:var(--kumkum);
+color:var(--zari-gold);
+padding:12px 30px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
 
-        @media (max-width: 768px) {
-            .event-card { flex-direction: column; }
-            .date-box { border-right: none; border-bottom: 4px double var(--zari-gold); }
-            .exclusive-name { font-size: 3.5rem; }
-        }
-    </style>
+#gallery{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:20px;
+}
+
+#gallery img{
+width:100%;
+border-radius:12px;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+footer{
+padding:80px 20px;
+text-align:center;
+background:var(--royal-maroon);
+color:var(--zari-gold);
+}
+</style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-    <source src="https://www.looperman.com/media/loops/4172778/looperman-l-4172778-0255272-punjabi-dhol-beat.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-control" onclick="toggleMusic()">
-    <i id="music-icon" class="fas fa-music"></i>
-</div>
-
-<div id="petal-container"></div>
-
 <header class="hero">
-    <p style="letter-spacing: 5px; color: var(--zari-gold);" data-aos="fade-down">|| श्री गणेशाय नमः ||</p>
-    <h1 class="exclusive-name" data-aos="zoom-in">Parth & Anveshi</h1>
-    <h2 style="font-family: 'Pinyon Script'; font-size: 2.5rem; color: white;">Wedding Invitation</h2>
-    
-    <div class="countdown" data-aos="fade-up">
-        <div class="count-box"><span id="days">00</span><label>Days</label></div>
-        <div class="count-box"><span id="hours">00</span><label>Hrs</label></div>
-        <div class="count-box"><span id="mins">00</span><label>Mins</label></div>
-        <div class="count-box"><span id="secs">00</span><label>Secs</label></div>
-    </div>
-    
-    <p style="margin-top: 30px; letter-spacing: 3px; font-weight: 600;">12th March 2026 • New Delhi</p>
+<p>|| श्री गणेशाय नमः ||</p>
+<h1 class="exclusive-name">Parth & Anveshi</h1>
+<h2>Wedding Invitation</h2>
+<p>12th March 2026 • New Delhi</p>
 </header>
 
 <section class="itinerary-section">
-    <h2 style="text-align:center; font-family:'Cinzel Decorative'; color:var(--royal-maroon); font-size: 3rem; margin-bottom:60px;" data-aos="fade-up">The Royal Itinerary</h2>
+<h2 style="text-align:center;font-family:'Cinzel Decorative';color:var(--royal-maroon);margin-bottom:50px;">The Royal Itinerary</h2>
 
-    <!-- MARCH 07 -->
-    <div class="event-card" data-aos="fade-right">
-        <div class="date-box"><h3>07</h3><p>MARCH</p></div>
-        <div class="details-box">
-            <h4>Kirtan</h4>
-            <p><i class="fas fa-clock"></i> 4:00 PM onwards</p>
-            <p><i class="fas fa-map-marker-alt"></i> 48 Savita Vihar, Delhi</p>
-        </div>
-    </div>
+<div class="event-card">
+<div class="date-box">
+<h3>07</h3>
+<p>March</p>
+</div>
+<div class="details-box">
+<h4>Kirtan</h4>
+<p>4:00 PM onwards • 48 Savita Vihar, Delhi</p>
+</div>
+</div>
 
-    <!-- MARCH 09 -->
-    <div class="event-card" data-aos="fade-left">
-        <div class="date-box" style="background: var(--kumkum);"><h3>09</h3><p>MARCH</p></div>
-        <div class="details-box">
-            <h4>Sagan Ceremony</h4>
-            <p><i class="fas fa-clock"></i> 9:00 PM onwards</p>
-            <p><i class="fas fa-map-marker-alt"></i> Le-Meridien, New Delhi</p>
-        </div>
-    </div>
+<div class="event-card">
+<div class="date-box">
+<h3>12</h3>
+<p>March</p>
+</div>
+<div class="details-box">
+<h4>The Grand Wedding</h4>
+<p>9:30 PM • Oodles by Bella Monde, Chattarpur</p>
+</div>
+</div>
 
-    <!-- MARCH 12 -->
-    <div class="event-card" data-aos="zoom-in" style="box-shadow: 15px 15px 0 var(--zari-gold);">
-        <div class="date-box" style="background: var(--zari-gold); color: var(--royal-maroon);"><h3>12</h3><p>MARCH</p></div>
-        <div class="details-box">
-            <h4 style="color: var(--kumkum);">The Grand Wedding</h4>
-            <div style="background: var(--royal-maroon); color: white; padding: 20px; border-radius: 10px; margin-top: 15px;">
-                <p><strong>SHUBH VIVAH:</strong> 9:30 PM Onwards</p>
-                <p><small>Oodles by Bella Monde, Chattarpur, New Delhi</small></p>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- 👑 POV UPLOAD SECTION -->
-<section class="pov-section" id="pov">
-    <h2>Share Your Wedding POV</h2>
-    <p style="font-family: 'Pinyon Script'; font-size: 1.8rem; color: var(--kumkum);">Capture the moments we missed!</p>
+<section class="pov-section">
+<h2>Share Your Wedding POV</h2>
 
-    <div class="upload-container" data-aos="fade-up">
-        <input type="file" id="photoUpload" accept="image/*" style="display: none;">
-        <label for="photoUpload" style="cursor: pointer; display: block; padding: 20px; color: var(--royal-maroon); font-weight: 600;">
-            <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; margin-bottom: 10px;"></i><br>
-            Click to Select Wedding Photo
-        </label>
-        <button class="upload-btn" onclick="uploadPhoto()">Upload to Gallery</button>
-        <p id="uploadStatus" style="margin-top: 10px; font-size: 0.8rem; font-weight: 700; color: var(--kumkum);"></p>
-    </div>
+<input type="file" id="photoUpload" accept="image/*">
+<br><br>
+<button class="upload-btn" onclick="uploadPhoto()">Upload Photo</button>
 
-    <div id="gallery">
-        <!-- Photos will appear here dynamically -->
-    </div>
+<div id="gallery"></div>
 </section>
 
 <footer>
-    <h2 style="font-family:'Pinyon Script';font-size:4rem;">Parth & Anveshi</h2>
-    <p style="letter-spacing: 5px; opacity: 0.7;">#ParthAnveshiTogether</p>
+<h2 style="font-family:'Pinyon Script';font-size:3rem;">Parth & Anveshi</h2>
+<p>#ParthAnveshiTogether</p>
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- 🔥 FIREBASE SCRIPT -->
 <script type="module">
-    // --- FIREBASE INTEGRATION ---
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-   <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyByKgCulb1Nw0LtOVmBVxLDWVrzLuhHXyQ",
-    authDomain: "photoswedd-41256.firebaseapp.com",
-    projectId: "photoswedd-41256",
-    storageBucket: "photoswedd-41256.firebasestorage.app",
-    messagingSenderId: "794722529457",
-    appId: "1:794722529457:web:18813108f6fe55a8ebb290"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyByKgCulb1Nw0LtOVmBVxLDWVrzLuhHXyQ",
+  authDomain: "photoswedd-41256.firebaseapp.com",
+  projectId: "photoswedd-41256",
+  storageBucket: "photoswedd-41256.firebasestorage.app",
+  messagingSenderId: "794722529457",
+  appId: "1:794722529457:web:18813108f6fe55a8ebb290"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-    };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const storage = getStorage(app);
+window.uploadPhoto = async function() {
+const file = document.getElementById("photoUpload").files[0];
+if (!file) return alert("Please select a photo.");
 
-    window.uploadPhoto = async function() {
-        const file = document.getElementById("photoUpload").files[0];
-        const status = document.getElementById("uploadStatus");
-        if (!file) return alert("Please select a photo.");
+const storageRef = ref(storage, "weddingPhotos/" + Date.now() + file.name);
+await uploadBytes(storageRef, file);
+const url = await getDownloadURL(storageRef);
 
-        status.innerText = "Uploading... please wait.";
-        
-        try {
-            const storageRef = ref(storage, "weddingPhotos/" + Date.now() + "_" + file.name);
-            await uploadBytes(storageRef, file);
-            const url = await getDownloadURL(storageRef);
+await addDoc(collection(db, "photos"), {
+imageUrl: url,
+createdAt: new Date()
+});
 
-            await addDoc(collection(db, "photos"), {
-                imageUrl: url,
-                createdAt: new Date()
-            });
+document.getElementById("photoUpload").value = "";
+};
 
-            status.innerText = "Success! Photo added to gallery.";
-            document.getElementById("photoUpload").value = "";
-        } catch (e) {
-            status.innerText = "Upload failed. Check Firebase settings.";
-            console.error(e);
-        }
-    };
+const q = query(collection(db, "photos"), orderBy("createdAt", "desc"));
 
-    // Real-time Gallery Update
-    const q = query(collection(db, "photos"), orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) => {
-        const gallery = document.getElementById("gallery");
-        gallery.innerHTML = "";
-        snapshot.forEach((doc) => {
-            const div = document.createElement("div");
-            div.className = "gallery-item";
-            div.innerHTML = `<img src="${doc.data().imageUrl}" loading="lazy">`;
-            gallery.appendChild(div);
-        });
-    });
+onSnapshot(q, (snapshot) => {
+const gallery = document.getElementById("gallery");
+gallery.innerHTML = "";
 
-    // --- PAGE UI SCRIPTS ---
-    AOS.init({ duration: 1000, once: true });
+snapshot.forEach((doc) => {
+const img = document.createElement("img");
+img.src = doc.data().imageUrl;
+gallery.appendChild(img);
+});
+});
 
-    // Petal Shower
-    function createPetal() {
-        const container = document.getElementById('petal-container');
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.width = Math.random() * 15 + 10 + 'px';
-        petal.style.height = petal.style.width;
-        petal.style.animationDuration = Math.random() * 3 + 5 + 's';
-        container.appendChild(petal);
-        setTimeout(() => petal.remove(), 7000);
-    }
-    setInterval(createPetal, 450);
-
-    // Countdown
-    const weddingDate = new Date("March 12, 2026 21:30:00").getTime();
-    setInterval(() => {
-        const now = new Date().getTime();
-        const diff = weddingDate - now;
-        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
-    }, 1000);
-
-    // Music
-    const music = document.getElementById('bgMusic');
-    const mIcon = document.getElementById('music-icon');
-    window.toggleMusic = function() {
-        if (music.paused) {
-            music.play();
-            mIcon.classList.replace('fa-music', 'fa-pause');
-        } else {
-            music.pause();
-            mIcon.classList.replace('fa-pause', 'fa-music');
-        }
-    };
-
-    // Autoplay Music on scroll
-    window.addEventListener('scroll', () => {
-        if(music.paused) music.play().catch(() => {});
-    }, {once: true});
 </script>
 
 </body>
