@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parth & Anveshi | The Royal Union</title>
+    <title>Parth & Anveshi | The Grand Royal Wedding</title>
     
-    <!-- Premium Fonts -->
+    <!-- Premium Royal Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -40,14 +40,14 @@
             animation: swing 4s infinite ease-in-out; transform-origin: top;
         }
         .marigold {
-            width: 32px; height: 32px;
+            width: 30px; height: 30px;
             background: radial-gradient(circle, #ffcc00 0%, #ff9933 60%, #e67e22 100%);
             border-radius: 50%;
             box-shadow: inset 0 0 5px rgba(0,0,0,0.2), 1px 2px 4px rgba(0,0,0,0.3);
             position: relative;
         }
         .mango-leaf {
-            width: 12px; height: 35px;
+            width: 12px; height: 32px;
             background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
             border-radius: 0 100% 0 100%;
             margin-top: -5px; box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
@@ -67,37 +67,30 @@
             border-bottom: 8px double var(--zari-gold);
         }
 
-        .hero-shlok {
-            font-family: 'Playfair Display', serif; font-size: 1.2rem;
-            color: var(--silk-gold); margin-bottom: 25px; letter-spacing: 3px;
-        }
-
-        /* --- EXCLUSIVE NAME STYLE --- */
+        /* --- EXCLUSIVE GOLD SHIMMER NAME --- */
         .exclusive-name {
             font-family: 'Cinzel Decorative', serif;
-            font-size: clamp(3rem, 10vw, 7rem);
+            font-size: clamp(3rem, 10vw, 7.5rem);
             font-weight: 900;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
-            line-height: 1;
+            line-height: 1.1;
             letter-spacing: 4px;
             margin: 10px 0;
             animation: shimmer 5s infinite linear;
             background-size: 200% auto;
         }
 
-        @keyframes shimmer {
-            to { background-position: 200% center; }
-        }
+        @keyframes shimmer { to { background-position: 200% center; } }
 
         .hero h2 {
             font-family: 'Pinyon Script', cursive;
-            font-size: 2.8rem; color: white; margin-top: -10px;
+            font-size: 3rem; color: white; margin-top: -10px;
         }
 
-        /* --- ITINERARY CARDS --- */
+        /* --- ROYAL ITINERARY BOXES --- */
         .itinerary-section { padding: 100px 20px; max-width: 1200px; margin: auto; }
         
         .event-card {
@@ -115,7 +108,7 @@
             border-right: 6px double var(--zari-gold);
         }
         .date-box h3 { font-family: 'Cinzel Decorative'; font-size: 4.5rem; line-height: 1; }
-        .date-box p { font-weight: 700; letter-spacing: 4px; }
+        .date-box p { font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
 
         .details-box { padding: 50px; flex: 1; background-image: url('https://www.transparenttextures.com/patterns/silk.png'); }
         .details-box h4 { 
@@ -139,181 +132,4 @@
         @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
 
         @media (max-width: 768px) {
-            .event-card { flex-direction: column; }
-            .date-box { padding: 30px; }
-            .details-box { padding: 30px; }
-            .exclusive-name { font-size: 3.5rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- TRADITIONAL WEDDING AUDIO (Shehnai/Instrumental) -->
-    <audio id="weddingMusic" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="music-btn" onclick="toggleMusic()">
-        <i id="music-icon" class="fas fa-volume-mute"></i>
-    </div>
-
-    <div id="petal-container"></div>
-
-    <header class="hero">
-        <div class="toran-container">
-            <script>
-                for(let i=0; i<20; i++) {
-                    document.write(`<div class="garland-string"><div class="marigold"></div><div class="mango-leaf"></div></div>`);
-                }
-            </script>
-        </div>
-
-        <p class="hero-shlok" data-aos="fade-down" data-aos-duration="1500">|| श्री गणेशाय नमः ||</p>
-        
-        <p style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem;" data-aos="fade-up">The Royal Union of</p>
-        
-        <h1 class="exclusive-name" data-aos="zoom-in" data-aos-duration="2500">Parth & Anveshi</h1>
-        <h2 data-aos="fade-up" data-aos-delay="800">Wedding Invitation</h2>
-        
-        <div style="width: 200px; height: 2px; background: var(--zari-gold); margin: 30px 0;" data-aos="stretch"></div>
-        <p style="font-size: 1.8rem; font-family: 'Playfair Display'; color: var(--zari-gold);" data-aos="fade-up" data-aos-delay="1000">12th March 2026 • New Delhi</p>
-    </header>
-
-    <section class="itinerary-section">
-        <h2 style="text-align: center; font-family: 'Cinzel Decorative'; font-size: 3.5rem; color: var(--royal-maroon); margin-bottom: 80px;" data-aos="fade-up">The Royal Itinerary</h2>
-
-        <!-- KIRTAN -->
-        <div class="event-card" data-aos="fade-up">
-            <div class="date-box">
-                <p>MARCH</p>
-                <h3>07</h3>
-                <p>SATURDAY</p>
-            </div>
-            <div class="details-box">
-                <h4>Kirtan</h4>
-                <p>Invoking divine blessings as we begin our holy union with sacred melodies and spiritual harmony.</p>
-                <div style="margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; gap: 40px;">
-                    <div><b style="color: var(--kumkum); display: block;">Timing</b> 4:00 PM onwards</div>
-                    <div><b style="color: var(--kumkum); display: block;">Venue</b> 48 Savita Vihar, Delhi</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MEHENDI -->
-        <div class="event-card" data-aos="fade-up">
-            <div class="date-box">
-                <p>MARCH</p>
-                <h3>10</h3>
-                <p>TUESDAY</p>
-            </div>
-            <div class="details-box">
-                <h4>Mehendi Ceremony</h4>
-                <p>An evening of vibrant colors and traditional music. Let the colors of love flourish on our hands.</p>
-                <div style="margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; gap: 40px;">
-                    <div><b style="color: var(--kumkum); display: block;">Timing</b> 6:00 PM onwards</div>
-                    <div><b style="color: var(--kumkum); display: block;">Venue</b> 48 Savita Vihar, Delhi</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- COCKTAIL -->
-        <div class="event-card" data-aos="fade-up">
-            <div class="date-box">
-                <p>MARCH</p>
-                <h3>11</h3>
-                <p>WEDNESDAY</p>
-            </div>
-            <div class="details-box">
-                <h4>Cocktail Night</h4>
-                <p>A toast to the future! Join us for a night of glitz, glamour, and endless celebration.</p>
-                <div style="margin-top: 25px; border-top: 1px solid #ddd; padding-top: 20px; display: flex; gap: 40px;">
-                    <div><b style="color: var(--kumkum); display: block;">Timing</b> 8:00 PM onwards</div>
-                    <div><b style="color: var(--kumkum); display: block;">Venue</b> East End Club, Delhi</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- THE WEDDING DAY -->
-        <div class="event-card" data-aos="zoom-in" style="box-shadow: 20px 20px 0px var(--zari-gold);">
-            <div class="date-box" style="background: var(--zari-gold); color: var(--royal-maroon);">
-                <p>MARCH</p>
-                <h3>12</h3>
-                <p>THURSDAY</p>
-            </div>
-            <div class="details-box" style="background: #fffdf9;">
-                <h4 style="color: var(--kumkum);">The Grand Wedding</h4>
-                
-                <div style="display: flex; gap: 30px; margin-bottom: 25px;">
-                    <div style="background: var(--cream); padding: 10px 20px; border-radius: 10px; border-left: 4px solid var(--zari-gold);">
-                        <small>HALDI</small><br><b>9:00 AM</b>
-                    </div>
-                    <div style="background: var(--cream); padding: 10px 20px; border-radius: 10px; border-left: 4px solid var(--zari-gold);">
-                        <small>GHAROLI</small><br><b>11:00 AM</b>
-                    </div>
-                </div>
-
-                <div style="background: var(--royal-maroon); color: white; padding: 30px; border-radius: 15px; border: 2px solid var(--zari-gold);">
-                    <h5 style="font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--zari-gold);">Shubh Vivah</h5>
-                    <p style="font-weight: 700; font-size: 1.4rem;">9:30 PM Onwards</p>
-                    <p style="margin-top: 5px; opacity: 0.8;">Oodles by Bella Monde, Chattarpur, New Delhi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer style="padding: 100px 20px; text-align: center; background: var(--royal-maroon); color: var(--zari-gold);">
-        <h2 style="font-family: 'Pinyon Script'; font-size: 4.5rem; margin-bottom: 10px;">Parth & Anveshi</h2>
-        <p style="letter-spacing: 5px; opacity: 0.6; text-transform: uppercase;">#ParthAnveshiTogether</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1200, once: true });
-
-        const music = document.getElementById('weddingMusic');
-        const mIcon = document.getElementById('music-icon');
-        let isStarted = false;
-
-        // --- THE AUTO-PLAY ON SCROLL LOGIC ---
-        function handleAutoPlay() {
-            if (!isStarted) {
-                music.play().then(() => {
-                    mIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
-                    isStarted = true;
-                }).catch(error => {
-                    console.log("Autoplay prevented. User must interact.");
-                });
-            }
-        }
-
-        // Listen for scroll and click to trigger music
-        window.addEventListener('scroll', handleAutoPlay, { once: true });
-        window.addEventListener('click', handleAutoPlay, { once: true });
-
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                mIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
-            } else {
-                music.pause();
-                mIcon.classList.replace('fa-volume-up', 'fa-volume-mute');
-            }
-        }
-
-        // Petals logic
-        const container = document.getElementById('petal-container');
-        function createPetal() {
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.width = Math.random() * 15 + 10 + 'px';
-            petal.style.height = petal.style.width;
-            petal.style.animationDuration = Math.random() * 3 + 5 + 's';
-            container.appendChild(petal);
-            setTimeout(() => petal.remove(), 7000);
-        }
-        setInterval(createPetal, 450);
-    </script>
-</body>
-</html>
+            .event-card { flex-direction: column; box-shadow: 10px 10px 0px
