@@ -30,6 +30,24 @@
             overflow-x: hidden;
         }
 
+           /* --- TRANSPARENT ENTRANCE OVERLAY --- */
+        #entrance-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Semi-transparent background with blur */
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+
         /* --- REFINED SLIM GARLAND --- */
         .toran-container {
             position: absolute; top: 0; width: 100%; display: flex; 
