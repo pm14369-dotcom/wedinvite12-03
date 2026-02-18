@@ -11,6 +11,45 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* Entrance Overlay Styles */
+#entrance-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(84, 2, 2, 0.95), rgba(40, 0, 0, 0.98)); /* Using your maroon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Stays above everything */
+    transition: opacity 1s ease-in-out, visibility 1s;
+    text-align: center;
+}
+
+.enter-btn {
+    padding: 15px 45px;
+    background: transparent;
+    color: var(--zari-gold);
+    border: 2px solid var(--zari-gold);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    letter-spacing: 3px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.enter-btn:hover {
+    background: var(--zari-gold);
+    color: var(--royal-maroon);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+/* Hide body scroll while overlay is active */
+body.no-scroll {
+    overflow: hidden;
+}
         :root {
             --royal-maroon: #540202;
             --kumkum: #7a0000;
@@ -29,7 +68,14 @@
             color: #222;
             overflow-x: hidden;
         }
-
+<!-- Entrance Overlay -->
+<div id="entrance-overlay">
+    <div class="entrance-content" data-aos="zoom-in">
+        <p style="color: var(--zari-gold); letter-spacing: 5px; margin-bottom: 10px;">WELCOME TO THE WEDDING OF</p>
+        <h1 style="font-family: 'Pinyon Script', cursive; color: white; font-size: 5rem; margin-bottom: 30px;">Parth & Anveshi</h1>
+        <button class="enter-btn" onclick="enterSite()">Open Invitation</button>
+    </div>
+</div>
         /* --- REFINED SLIM GARLAND --- */
         .toran-container {
             position: absolute; top: 0; width: 100%; display: flex; 
@@ -155,6 +201,25 @@
     <header class="hero">
         <div class="toran-container">
             <script>
+                // Function to handle the entrance
+function enterSite() {
+    const overlay = document.getElementById('entrance-overlay');
+    
+    // Start the music (using your existing function)
+    startAudio(); 
+    
+    // Fade out effect
+    overlay.style.opacity = '0';
+    overlay.style.visibility = 'hidden';
+    
+    // Re-enable scrolling
+    document.body.classList.remove('no-scroll');
+}
+
+// Set no-scroll on load
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('no-scroll');
+});
                 for(let i=0; i<22; i++) {
                     document.write(`<div class="garland-string"><div class="marigold"></div><div class="mango-leaf"></div></div>`);
                 }
