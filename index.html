@@ -25,6 +25,7 @@
             overflow: hidden; 
         }
 
+        /* --- VIDEO SNAPPING CONTAINER --- */
         .video-container {
             height: 100vh;
             overflow-y: scroll;
@@ -44,29 +45,38 @@
             overflow: hidden;
         }
 
-        /* --- CINEMATIC TEXT EFFECTS --- */
+        /* --- CINEMATIC TEXT REVEAL --- */
         .title-reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+            transition: all 1.8s cubic-bezier(0.2, 1, 0.3, 1);
+            z-index: 10;
         }
         .active .title-reveal {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- KEN BURNS (ZOOM) EFFECT --- */
+        /* --- RESTORED COUPLE PHOTO WITH KEN BURNS EFFECT --- */
         .bg-video-sim {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+            z-index: 1;
             background-size: cover;
             background-position: center;
-            transform: scale(1.1);
+            transform: scale(1);
             transition: transform 12s linear;
         }
         .active .bg-video-sim {
-            transform: scale(1.3);
+            transform: scale(1.2);
+        }
+
+        /* Dark overlay to ensure text is readable over the photo */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+            z-index: 2;
         }
 
         /* --- FILM OVERLAYS --- */
@@ -75,13 +85,6 @@
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
             opacity: 0.15; pointer-events: none; z-index: 1000;
         }
-
-        .light-leak {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-            pointer-events: none; z-index: 1001; animation: leak 8s infinite alternate;
-        }
-        @keyframes leak { 0% { opacity: 0.3; } 100% { opacity: 0.6; } }
 
         /* --- ENTRANCE --- */
         #entrance-overlay {
@@ -99,10 +102,10 @@
         .seal-btn:hover { background: var(--gold); color: #000; }
 
         .scene-card {
-            background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(12px);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(15px);
             padding: 40px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             max-width: 600px;
             width: 85%;
         }
@@ -128,7 +131,6 @@
 <body>
 
     <div class="film-grain"></div>
-    <div class="light-leak"></div>
 
     <audio id="weddingMusic" loop preload="auto"><source src="music.mp3" type="audio/mpeg"></audio>
     <div class="music-btn" onclick="toggleMusic()"><i id="music-icon" class="fas fa-play"></i></div>
@@ -136,86 +138,92 @@
     <!-- Entrance scene -->
     <div id="entrance-overlay">
         <p style="font-family: 'Playfair Display'; letter-spacing: 8px; color: var(--gold); margin-bottom: 20px; font-size: 0.8rem;">SAPNA & JITENDER MOHAN</p>
-        <p style="font-family: 'Pinyon Script'; font-size: 2.8rem; margin-bottom: 40px; text-align:center;">Request the pleasure of your company</p>
-        <button class="seal-btn" onclick="enterSite()">WATCH FILM</button>
+        <p style="font-family: 'Pinyon Script'; font-size: 2.8rem; margin-bottom: 40px; text-align:center; padding: 0 20px;">Invite you to the Royal Wedding Film of</p>
+        <button class="seal-btn" onclick="enterSite()">PLAY INVITATION</button>
     </div>
 
     <div class="video-container" id="main-scroller">
         
-        <!-- SCENE 1: HERO -->
+        <!-- SCENE 1: THE HERO (Photo Restored) -->
         <section class="scene active">
-            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('couple.JPG');"></div>
+            <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
+            <div class="overlay"></div>
             <div class="title-reveal">
-                <p style="letter-spacing: 15px; font-size: 0.7rem; margin-bottom: 15px; opacity: 0.8;">THE ROYAL WEDDING OF</p>
+                <p style="letter-spacing: 15px; font-size: 0.7rem; margin-bottom: 15px; opacity: 0.9;">A CINEMATIC JOURNEY OF</p>
                 <h1 class="exclusive-name">Parth & Anveshi</h1>
-                <p style="font-family: 'Pinyon Script'; font-size: 3rem; color: #fff; margin-top: 15px;">12th March 2026</p>
+                <p style="font-family: 'Pinyon Script'; font-size: 3rem; color: #fff; margin-top: 15px;">12 • 03 • 2026</p>
             </div>
         </section>
 
-        <!-- SCENE 2: BLESSINGS -->
+        <!-- SCENE 2: DIVINE BLESSINGS -->
         <section class="scene">
             <div class="bg-video-sim" style="background-color: var(--royal-maroon); background-image: url('https://www.transparenttextures.com/patterns/mandala.png');"></div>
             <div class="title-reveal">
-                <p style="letter-spacing: 10px; color: var(--gold); margin-bottom: 20px;">ॐ श्री गणेशाय नमः</p>
+                <p style="letter-spacing: 10px; color: var(--gold); margin-bottom: 25px;">ॐ श्री गणेशाय नमः</p>
                 <h2 style="font-family: 'Cinzel Decorative'; font-size: 2.5rem; color: #fff;">Divine Blessings</h2>
                 <div style="width: 40px; height: 1px; background: var(--gold); margin: 30px auto;"></div>
-                <p style="max-width: 500px; margin: auto; font-style: italic; opacity: 0.8; line-height: 2; padding: 0 20px;">
-                    "May Lord Ganesha remove all obstacles and bless this union with eternal happiness and prosperity."
+                <p style="max-width: 500px; margin: auto; font-style: italic; opacity: 0.8; line-height: 2; padding: 0 25px;">
+                    "With the grace of God and the blessings of our ancestors, we begin our beautiful journey of togetherness."
                 </p>
             </div>
         </section>
 
         <!-- SCENE 3: KIRTAN -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1545235661-3ee13e90970e?q=80&w=1000');"></div>
+            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1545235661-3ee13e90970e?q=80&w=1000');"></div>
+            <div class="overlay" style="background: rgba(0,0,0,0.7);"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2.2rem;">Kirtan</h3>
-                <p style="margin: 20px 0; opacity: 0.9;">Spiritual harmony to begin our holy journey.</p>
-                <p style="letter-spacing: 4px; font-weight: 600;">SATURDAY, MARCH 07 • 4:30 PM</p>
+                <p style="margin: 20px 0; opacity: 0.9;">Sacred chants to invoke divine harmony.</p>
+                <p style="letter-spacing: 4px; font-weight: 600;">MARCH 07 • 4:30 PM</p>
                 <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 15px;">48 SAVITA VIHAR, DELHI</p>
             </div>
         </section>
 
         <!-- SCENE 4: SAGAN -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000');"></div>
+            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000');"></div>
+            <div class="overlay" style="background: rgba(0,0,0,0.7);"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2.2rem;">Sagan</h3>
-                <p style="margin: 20px 0; opacity: 0.9;">A formal evening of pre-wedding rituals & celebration.</p>
-                <p style="letter-spacing: 4px; font-weight: 600;">MONDAY, MARCH 09 • 8:00 PM</p>
+                <p style="margin: 20px 0; opacity: 0.9;">A grand evening of pre-wedding rituals.</p>
+                <p style="letter-spacing: 4px; font-weight: 600;">MARCH 09 • 8:00 PM</p>
                 <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 15px;">LE-MERIDIEN, NEW DELHI</p>
             </div>
         </section>
 
-        <!-- SCENE 5: MEHENDI (ADDED) -->
+        <!-- SCENE 5: MEHENDI -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=1000');"></div>
+            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=1000');"></div>
+            <div class="overlay" style="background: rgba(0,0,0,0.7);"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2.2rem;">Mehendi</h3>
-                <p style="margin: 20px 0; opacity: 0.9;">Drench your hands in henna and your soul in rhythmic beats.</p>
-                <p style="letter-spacing: 4px; font-weight: 600;">TUESDAY, MARCH 10 • 6:00 PM</p>
+                <p style="margin: 20px 0; opacity: 0.9;">Vibrant colors and the rhythmic beats of celebration.</p>
+                <p style="letter-spacing: 4px; font-weight: 600;">MARCH 10 • 6:00 PM</p>
                 <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 15px;">48 SAVITA VIHAR, DELHI</p>
             </div>
         </section>
 
         <!-- SCENE 6: COCKTAIL -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1000');"></div>
+            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1000');"></div>
+            <div class="overlay" style="background: rgba(0,0,0,0.7);"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2.2rem;">Cocktail Night</h3>
-                <p style="margin: 20px 0; opacity: 0.9;">Raise a glass to love and laughter before the big day.</p>
-                <p style="letter-spacing: 4px; font-weight: 600;">WEDNESDAY, MARCH 11 • 8:00 PM</p>
+                <p style="margin: 20px 0; opacity: 0.9;">Celebration, music, and toasts to a new beginning.</p>
+                <p style="letter-spacing: 4px; font-weight: 600;">MARCH 11 • 8:00 PM</p>
                 <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 15px;">EAST END CLUB, DELHI</p>
             </div>
         </section>
 
-        <!-- SCENE 7: THE WEDDING -->
+        <!-- SCENE 7: THE WEDDING (Photo Restored) -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,1)), url('couple.JPG');"></div>
+            <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
+            <div class="overlay"></div>
             <div class="title-reveal scene-card" style="max-width: 700px;">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2.2rem; margin-bottom: 25px;">The Grand Wedding</h3>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 20px; margin-bottom: 25px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 20px; margin-bottom: 25px;">
                     <div><small style="color: var(--gold); letter-spacing: 2px;">BARAT WELCOME</small><p style="font-size: 1.2rem; font-weight: 700;">7:00 PM</p></div>
                     <div><small style="color: var(--gold); letter-spacing: 2px;">SHUBH VIVAH</small><p style="font-size: 1.2rem; font-weight: 700;">9:30 PM</p></div>
                 </div>
@@ -229,11 +237,11 @@
             </div>
         </section>
 
-        <!-- SCENE 8: COMPLIMENTS -->
+        <!-- SCENE 8: CLOSING -->
         <section class="scene">
             <div class="bg-video-sim" style="background-color: #000;"></div>
             <div class="title-reveal">
-                <h4 style="font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold); letter-spacing: 8px;">PARTH & ANVESHI</h4>
+                <h4 style="font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold); letter-spacing: 8px;">#PARTHANVESHITOGETHER</h4>
                 <div style="margin-top: 60px;">
                     <p style="font-size: 0.65rem; letter-spacing: 6px; opacity: 0.5;">WITH COMPLIMENTS FROM</p>
                     <p style="font-family: 'Playfair Display'; font-size: 1.6rem; margin-top: 15px; letter-spacing: 3px;">THE MOHAN FAMILY</p>
@@ -244,7 +252,7 @@
     </div>
 
     <script>
-        // Intersection Observer to handle scene animations
+        // --- SCENE OBSERVER ---
         const scroller = document.getElementById('main-scroller');
         const scenes = document.querySelectorAll('.scene');
 
@@ -260,7 +268,7 @@
 
         scenes.forEach(scene => observer.observe(scene));
 
-        // Entrance & Music Controls
+        // --- ENTRANCE & MUSIC ---
         const music = document.getElementById('weddingMusic');
         const mIcon = document.getElementById('music-icon');
 
