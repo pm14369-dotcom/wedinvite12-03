@@ -94,6 +94,26 @@
             z-index: 200001; position: relative;
         }
 
+        /* --- FLOATING SCROLL INDICATOR --- */
+        #scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5000;
+            color: var(--gold);
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.8s ease, visibility 0.8s;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        .indicator-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
         .scene-card {
             background: rgba(0,0,0,0.75);
             backdrop-filter: blur(10px);
@@ -144,13 +164,19 @@
     <!-- Entrance scene -->
     <div id="entrance-overlay">
         <p style="letter-spacing: 5px; color: var(--gold); margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase;">Sapna & Jitender Mohan</p>
-        <p style="font-family: 'Pinyon Script'; font-size: 2.5rem; margin-bottom: 40px; text-align:center; padding: 0 30px;">Invite you to the Royal Wedding </p>
-        <button class="seal-btn" onclick="enterSite()">OPEN INVITATION </button>
+        <p style="font-family: 'Pinyon Script'; font-size: 2.5rem; margin-bottom: 40px; text-align:center; padding: 0 30px;">Invite you to the Royal Wedding Film</p>
+        <button class="seal-btn" onclick="enterSite()">OPEN INVITATION</button>
+    </div>
+
+    <!-- Floating Scroll Indicator -->
+    <div id="scroll-indicator" onclick="scrollToNextScene()">
+        <p style="font-size: 0.6rem; letter-spacing: 3px; margin-bottom: 8px; font-weight: 300; text-transform: uppercase;">Scroll</p>
+        <i class="fas fa-chevron-down"></i>
     </div>
 
     <div class="video-container" id="main-scroller">
         
-        <!-- SCENE 1: THE HERO (Couple Photo Restored) -->
+        <!-- SCENE 1: THE HERO -->
         <section class="scene active">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
@@ -222,14 +248,13 @@
             </div>
         </section>
 
-        <!-- SCENE 7: THE WEDDING (Photo & GHAROLI Time Included) -->
+        <!-- SCENE 7: THE WEDDING -->
         <section class="scene">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
             <div class="title-reveal scene-card" style="width: 92%;">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8rem; margin-bottom: 15px;">The Grand Wedding</h3>
                 
-                <!-- Morning Rituals -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
                     <div style="background: rgba(255,255,255,0.05); padding: 8px;">
                         <small style="color: var(--gold); font-size: 0.6rem; letter-spacing: 1px;">HALDI</small>
@@ -241,17 +266,14 @@
                     </div>
                 </div>
 
-                <!-- Evening Timings -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 15px; margin-bottom: 15px;">
                     <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">BARAT WELCOME</small><p style="font-size: 0.9rem; font-weight: 700;">7:00 PM</p></div>
                     <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">SHUBH VIVAH</small><p style="font-size: 0.9rem; font-weight: 700;">9:30 PM</p></div>
                 </div>
 
-                <!-- Vidaai -->
                 <p style="font-family: 'Pinyon Script'; font-size: 2.2rem; color: var(--gold);">Vidaai at 4:00 AM</p>
                 <p style="font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-bottom: 15px;">"Taroo ki chaw main"</p>
                 
-                <!-- Google Maps Link -->
                 <a href="https://www.google.com/maps/search/?api=1&query=Oodles+by+Bella+Monde+Chattarpur+New+Delhi" 
                    target="_blank" class="map-link">
                     <i class="fas fa-map-marker-alt"></i> OPEN GOOGLE MAPS
@@ -274,8 +296,11 @@
     </div>
 
     <script>
-        // Setup Scene Observer for Snap Scrolling
+        const scrollerContainer = document.getElementById('main-scroller');
+        const scrollIndicator = document.getElementById('scroll-indicator');
         const scenes = document.querySelectorAll('.scene');
+
+        // Scene Observer Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -288,36 +313,37 @@
 
         scenes.forEach(scene => observer.observe(scene));
 
-        // Entrance & Music Logic
+        // Entrance Logic
         const music = document.getElementById('weddingMusic');
         const mIcon = document.getElementById('music-icon');
 
         function enterSite() {
-            // Immediately slide up the entrance gate
-            const overlay = document.getElementById('entrance-overlay');
-            overlay.classList.add('opened');
-            
-            // Allow music to play
+            document.getElementById('entrance-overlay').classList.add('opened');
             if (music) {
                 music.play().then(() => {
                     mIcon.classList.replace('fa-play', 'fa-pause');
-                }).catch(e => {
-                    console.log("Audio waiting for secondary tap.");
-                });
+                }).catch(e => console.log("Audio waiting..."));
             }
         }
 
         function toggleMusic() {
-            if (music.paused) { 
-                music.play(); 
-                mIcon.classList.replace('fa-play', 'fa-pause'); 
-            } else { 
-                music.pause(); 
-                mIcon.classList.replace('fa-pause', 'fa-play'); 
-            }
+            if (music.paused) { music.play(); mIcon.classList.replace('fa-play', 'fa-pause'); }
+            else { music.pause(); mIcon.classList.replace('fa-pause', 'fa-play'); }
         }
 
-        // Mobile height resizing fix
+        // Scroll Indicator Logic
+        function scrollToNextScene() {
+            scrollerContainer.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        }
+
+        scrollerContainer.addEventListener('scroll', function() {
+            if (scrollerContainer.scrollTop > 50) {
+                scrollIndicator.classList.add('indicator-hidden');
+            } else {
+                scrollIndicator.classList.remove('indicator-hidden');
+            }
+        });
+
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
