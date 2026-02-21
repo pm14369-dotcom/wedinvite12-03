@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parth & Anveshi | The Cinematic Union</title>
     
+    <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;300;600&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -26,7 +27,7 @@
             width: 100%;
         }
 
-        /* --- MOBILE VIEWPORT --- */
+        /* --- CINEMATIC SNAPPING CONTAINER --- */
         .video-container {
             height: 100dvh;
             overflow-y: scroll;
@@ -48,6 +49,7 @@
             overflow: hidden;
         }
 
+        /* --- THEATRICAL REVEAL --- */
         .title-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -57,6 +59,7 @@
         }
         .active .title-reveal { opacity: 1; transform: translateY(0); }
 
+        /* --- KEN BURNS EFFECT --- */
         .bg-video-sim {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -66,43 +69,29 @@
             transform: scale(1.1);
             transition: transform 8s ease-out;
         }
-        .active .bg-video-sim { transform: scale(1.2); }
+        .active .bg-video-sim { transform: scale(1.25); }
 
         .overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
             z-index: 2;
         }
 
-        /* --- ENTRANCE OVERLAY FIX --- */
+        /* --- ENTRANCE GATES --- */
         #entrance-overlay {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #000; 
-            z-index: 200000;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center;
+            position: fixed; inset: 0;
+            background: #000; z-index: 200000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: transform 1.2s cubic-bezier(0.8, 0, 0.2, 1);
             visibility: visible;
         }
-        
-        /* This class triggers the slide up */
-        #entrance-overlay.opened {
-            transform: translateY(-100%);
-            visibility: hidden;
-        }
+        #entrance-overlay.opened { transform: translateY(-100%); visibility: hidden; }
 
         .seal-btn {
             background: transparent; border: 2px solid var(--gold);
             padding: 18px 35px; color: var(--gold); font-family: 'Cinzel Decorative';
             letter-spacing: 3px; cursor: pointer; font-size: 1rem;
-            z-index: 200001; /* Ensure button is on top */
-            position: relative;
+            z-index: 200001; position: relative;
         }
 
         .scene-card {
@@ -130,6 +119,15 @@
             background: rgba(0,0,0,0.6); color: var(--gold);
         }
 
+        .map-link {
+            display: block; font-size: 0.65rem; letter-spacing: 2px; 
+            border: 1px solid var(--gold); padding: 12px; 
+            text-transform: uppercase; color: var(--gold); 
+            text-decoration: none; margin-top: 15px;
+            transition: 0.3s;
+        }
+        .map-link:active { background: var(--gold); color: #000; }
+
         .video-container::-webkit-scrollbar { display: none; }
     </style>
 </head>
@@ -146,13 +144,13 @@
     <!-- Entrance scene -->
     <div id="entrance-overlay">
         <p style="letter-spacing: 5px; color: var(--gold); margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase;">Sapna & Jitender Mohan</p>
-        <p style="font-family: 'Pinyon Script'; font-size: 2.5rem; margin-bottom: 40px; text-align:center; padding: 0 30px;">Invite you to the Royal Wedding Film</p>
-        <button class="seal-btn" onclick="enterSite()">WATCH FILM</button>
+        <p style="font-family: 'Pinyon Script'; font-size: 2.5rem; margin-bottom: 40px; text-align:center; padding: 0 30px;">Invite you to the Royal Wedding </p>
+        <button class="seal-btn" onclick="enterSite()">OPEN INVITATION </button>
     </div>
 
     <div class="video-container" id="main-scroller">
         
-        <!-- SCENE 1: HERO -->
+        <!-- SCENE 1: THE HERO (Couple Photo Restored) -->
         <section class="scene active">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
@@ -163,7 +161,7 @@
             </div>
         </section>
 
-        <!-- SCENE 2: BLESSINGS -->
+        <!-- SCENE 2: DIVINE BLESSINGS -->
         <section class="scene">
             <div class="bg-video-sim" style="background-color: var(--royal-maroon); background-image: url('https://www.transparenttextures.com/patterns/mandala.png'); opacity: 0.2;"></div>
             <div class="title-reveal" style="padding: 0 30px;">
@@ -183,7 +181,7 @@
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Kirtan</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">Sacred chants for harmony.</p>
-                <p style="letter-spacing: 2px; font-weight: 700;">MARCH 07 • 4:30 PM</p>
+                <p style="letter-spacing: 2px; font-weight: 700;">SATURDAY, MARCH 07 • 4:30 PM</p>
                 <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 10px;">48 SAVITA VIHAR, DELHI</p>
             </div>
         </section>
@@ -195,7 +193,7 @@
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Sagan</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">An elegant evening of rituals.</p>
-                <p style="letter-spacing: 2px; font-weight: 700;">MARCH 09 • 8:00 PM</p>
+                <p style="letter-spacing: 2px; font-weight: 700;">MONDAY, MARCH 09 • 8:00 PM</p>
                 <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 10px;">LE-MERIDIEN, NEW DELHI</p>
             </div>
         </section>
@@ -207,7 +205,7 @@
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Mehendi</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">Vibrant henna and celebration.</p>
-                <p style="letter-spacing: 2px; font-weight: 700;">MARCH 10 • 6:00 PM</p>
+                <p style="letter-spacing: 2px; font-weight: 700;">TUESDAY, MARCH 10 • 6:00 PM</p>
                 <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 10px;">48 SAVITA VIHAR, DELHI</p>
             </div>
         </section>
@@ -219,29 +217,45 @@
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Cocktail</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">Music, toasts and joy.</p>
-                <p style="letter-spacing: 2px; font-weight: 700;">MARCH 11 • 8:00 PM</p>
+                <p style="letter-spacing: 2px; font-weight: 700;">WEDNESDAY, MARCH 11 • 8:00 PM</p>
                 <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 10px;">EAST END CLUB, DELHI</p>
             </div>
         </section>
 
-        <!-- SCENE 7: THE WEDDING -->
+        <!-- SCENE 7: THE WEDDING (Photo & GHAROLI Time Included) -->
         <section class="scene">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
-            <div class="title-reveal scene-card">
-                <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8rem; margin-bottom: 20px;">The Grand Wedding</h3>
+            <div class="title-reveal scene-card" style="width: 92%;">
+                <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8rem; margin-bottom: 15px;">The Grand Wedding</h3>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 15px; margin-bottom: 20px;">
-                    <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">BARAT</small><p style="font-size: 1rem; font-weight: 700;">7:00 PM</p></div>
-                    <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">VIVAH</small><p style="font-size: 1rem; font-weight: 700;">9:30 PM</p></div>
+                <!-- Morning Rituals -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px;">
+                        <small style="color: var(--gold); font-size: 0.6rem; letter-spacing: 1px;">HALDI</small>
+                        <p style="font-size: 0.9rem; font-weight: 700;">9:00 AM</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px;">
+                        <small style="color: var(--gold); font-size: 0.6rem; letter-spacing: 1px;">GHAROLI</small>
+                        <p style="font-size: 0.9rem; font-weight: 700;">11:00 AM</p>
+                    </div>
                 </div>
 
+                <!-- Evening Timings -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 15px; margin-bottom: 15px;">
+                    <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">BARAT WELCOME</small><p style="font-size: 0.9rem; font-weight: 700;">7:00 PM</p></div>
+                    <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">SHUBH VIVAH</small><p style="font-size: 0.9rem; font-weight: 700;">9:30 PM</p></div>
+                </div>
+
+                <!-- Vidaai -->
                 <p style="font-family: 'Pinyon Script'; font-size: 2.2rem; color: var(--gold);">Vidaai at 4:00 AM</p>
                 <p style="font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-bottom: 15px;">"Taroo ki chaw main"</p>
                 
-                <div style="font-size: 0.7rem; letter-spacing: 2px; border: 1px solid var(--gold); padding: 10px; text-transform: uppercase;">
-                    Oodles by Bella Monde, Delhi
-                </div>
+                <!-- Google Maps Link -->
+                <a href="https://www.google.com/maps/search/?api=1&query=Oodles+by+Bella+Monde+Chattarpur+New+Delhi" 
+                   target="_blank" class="map-link">
+                    <i class="fas fa-map-marker-alt"></i> OPEN GOOGLE MAPS
+                </a>
             </div>
         </section>
 
@@ -260,7 +274,7 @@
     </div>
 
     <script>
-        // Setup Scene Observer
+        // Setup Scene Observer for Snap Scrolling
         const scenes = document.querySelectorAll('.scene');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -274,24 +288,21 @@
 
         scenes.forEach(scene => observer.observe(scene));
 
-        // Entrance Logic - FIXED
+        // Entrance & Music Logic
         const music = document.getElementById('weddingMusic');
         const mIcon = document.getElementById('music-icon');
 
         function enterSite() {
-            // 1. Immediately hide the overlay
+            // Immediately slide up the entrance gate
             const overlay = document.getElementById('entrance-overlay');
             overlay.classList.add('opened');
             
-            // 2. Enable interactions on the body
-            document.body.style.overflow = 'auto';
-
-            // 3. Try to play music (won't break the site if file is missing)
+            // Allow music to play
             if (music) {
                 music.play().then(() => {
                     mIcon.classList.replace('fa-play', 'fa-pause');
                 }).catch(e => {
-                    console.log("Audio skipped or blocked.");
+                    console.log("Audio waiting for secondary tap.");
                 });
             }
         }
@@ -306,7 +317,7 @@
             }
         }
 
-        // Fix for mobile UI height changes
+        // Mobile height resizing fix
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
