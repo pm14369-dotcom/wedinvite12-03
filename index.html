@@ -94,7 +94,7 @@
             z-index: 200001; position: relative;
         }
 
-        /* --- FLOATING SCROLL INDICATOR --- */
+        /* --- PERMANENT FLOATING SCROLL INDICATOR --- */
         #scroll-indicator {
             position: fixed;
             bottom: 30px;
@@ -104,7 +104,7 @@
             color: var(--gold);
             text-align: center;
             cursor: pointer;
-            transition: opacity 0.8s ease, visibility 0.8s;
+            transition: opacity 0.5s ease;
             animation: bounce 2s infinite;
         }
         @keyframes bounce {
@@ -112,7 +112,6 @@
             40% { transform: translateX(-50%) translateY(-10px); }
             60% { transform: translateX(-50%) translateY(-5px); }
         }
-        .indicator-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
         .scene-card {
             background: rgba(0,0,0,0.75);
@@ -165,10 +164,10 @@
     <div id="entrance-overlay">
         <p style="letter-spacing: 5px; color: var(--gold); margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase;">Sapna & Jitender Mohan</p>
         <p style="font-family: 'Pinyon Script'; font-size: 2.5rem; margin-bottom: 40px; text-align:center; padding: 0 30px;">Invite you to the Royal Wedding Film</p>
-        <button class="seal-btn" onclick="enterSite()">OPEN INVITATION</button>
+        <button class="seal-btn" onclick="enterSite()">WATCH FILM</button>
     </div>
 
-    <!-- Floating Scroll Indicator -->
+    <!-- Permanent Floating Scroll Indicator -->
     <div id="scroll-indicator" onclick="scrollToNextScene()">
         <p style="font-size: 0.6rem; letter-spacing: 3px; margin-bottom: 8px; font-weight: 300; text-transform: uppercase;">Scroll</p>
         <i class="fas fa-chevron-down"></i>
@@ -331,16 +330,17 @@
             else { music.pause(); mIcon.classList.replace('fa-pause', 'fa-play'); }
         }
 
-        // Scroll Indicator Logic
+        // Permanent Scroll Logic (only hides on the very last scene)
         function scrollToNextScene() {
             scrollerContainer.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
         }
 
         scrollerContainer.addEventListener('scroll', function() {
-            if (scrollerContainer.scrollTop > 50) {
-                scrollIndicator.classList.add('indicator-hidden');
+            // Check if we are at the bottom of the scroller
+            if (scrollerContainer.scrollHeight - scrollerContainer.scrollTop <= scrollerContainer.clientHeight + 50) {
+                scrollIndicator.style.opacity = '0';
             } else {
-                scrollIndicator.classList.remove('indicator-hidden');
+                scrollIndicator.style.opacity = '1';
             }
         });
 
