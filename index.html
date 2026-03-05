@@ -94,7 +94,7 @@
             z-index: 200001; position: relative;
         }
 
-        /* --- PERMANENT FLOATING SCROLL INDICATOR --- */
+        /* --- FLOATING SCROLL INDICATOR --- */
         #scroll-indicator {
             position: fixed;
             bottom: 30px;
@@ -138,14 +138,27 @@
             background: rgba(0,0,0,0.6); color: var(--gold);
         }
 
+        /* --- GALLERY STYLES --- */
+        .gallery-btn {
+            background: var(--gold-shimmer);
+            color: #000 !important;
+            padding: 15px 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
         .map-link {
             display: block; font-size: 0.65rem; letter-spacing: 2px; 
             border: 1px solid var(--gold); padding: 12px; 
             text-transform: uppercase; color: var(--gold); 
             text-decoration: none; margin-top: 15px;
-            transition: 0.3s;
         }
-        .map-link:active { background: var(--gold); color: #000; }
 
         .video-container::-webkit-scrollbar { display: none; }
     </style>
@@ -164,7 +177,7 @@
     <div id="entrance-overlay">
         <p style="letter-spacing: 5px; color: var(--gold); margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase;">Sapna & Jitender Mohan</p>
         <p style="font-family: 'Pinyon Script'; font-size: 2.5rem; margin-bottom: 40px; text-align:center; padding: 0 30px;">Invite you to the Royal Wedding Film</p>
-        <button class="seal-btn" onclick="enterSite()">WATCH FILM</button>
+        <button class="seal-btn" onclick="enterSite()">Invitation</button>
     </div>
 
     <!-- Permanent Floating Scroll Indicator -->
@@ -203,8 +216,7 @@
 
         <!-- SCENE 3: KIRTAN -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1545235661-3ee13e90970e?q=80&w=1000');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.75);"></div>
+            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1545235661-3ee13e90970e?q=80&w=1000');"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Kirtan</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">Sacred chants for harmony.</p>
@@ -215,8 +227,7 @@
 
         <!-- SCENE 4: SAGAN -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.75);"></div>
+            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000');"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Sagan</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">An elegant evening of rituals.</p>
@@ -227,8 +238,7 @@
 
         <!-- SCENE 5: MEHENDI -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=1000');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.75);"></div>
+            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=1000');"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Mehendi</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">Vibrant henna and celebration.</p>
@@ -239,8 +249,7 @@
 
         <!-- SCENE 6: COCKTAIL -->
         <section class="scene">
-            <div class="bg-video-sim" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1000');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.75);"></div>
+            <div class="bg-video-sim" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1000');"></div>
             <div class="title-reveal scene-card">
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Cocktail</h3>
                 <p style="margin: 10px 0; font-size: 0.9rem;">Music, toasts and joy.</p>
@@ -249,7 +258,7 @@
             </div>
         </section>
 
-        <!-- SCENE 7: THE WEDDING (Photo & Date & GHAROLI Time) -->
+        <!-- SCENE 7: THE WEDDING (Itinerary + Maps) -->
         <section class="scene">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
@@ -257,7 +266,6 @@
                 <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8rem; margin-bottom: 5px;">The Grand Wedding</h3>
                 <p style="letter-spacing: 2px; font-weight: 700; margin-bottom: 15px; color: #fff;">THURSDAY, MARCH 12</p>
                 
-                <!-- Morning Rituals -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
                     <div style="background: rgba(255,255,255,0.05); padding: 8px;">
                         <small style="color: var(--gold); font-size: 0.6rem; letter-spacing: 1px;">HALDI</small>
@@ -269,17 +277,14 @@
                     </div>
                 </div>
 
-                <!-- Evening Timings -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 15px; margin-bottom: 15px;">
                     <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">BARAT WELCOME</small><p style="font-size: 0.9rem; font-weight: 700;">7:00 PM</p></div>
                     <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">SHUBH VIVAH</small><p style="font-size: 0.9rem; font-weight: 700;">9:30 PM</p></div>
                 </div>
 
-                <!-- Vidaai -->
                 <p style="font-family: 'Pinyon Script'; font-size: 2.2rem; color: var(--gold);">Vidaai at 4:00 AM</p>
-                <p style="font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-bottom: 15px;">"Taroo ki chaw main"</p>
+                <p style="font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-bottom: 10px;">"Taroo ki chaw main"</p>
                 
-                <!-- Google Maps Link -->
                 <a href="https://www.google.com/maps/search/?api=1&query=Oodles+by+Bella+Monde+Chattarpur+New+Delhi" 
                    target="_blank" class="map-link">
                     <i class="fas fa-map-marker-alt"></i> OPEN GOOGLE MAPS
@@ -287,7 +292,26 @@
             </div>
         </section>
 
-        <!-- SCENE 8: CLOSING -->
+        <!-- SCENE 8: DIGITAL GUESTBOOK (WedUploader) -->
+        <section class="scene">
+            <div class="bg-video-sim" style="background-color: #1a1a1a; background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+            <div class="title-reveal scene-card">
+                <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">Capture Memories</h3>
+                <p style="margin: 15px 0; opacity: 0.8; font-size: 0.9rem;">Be our Guestographer! Share your beautiful clicks from our wedding rituals with us instantly.</p>
+                
+                <div style="width: 120px; height: 120px; background: rgba(255,255,255,0.05); margin: 20px auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold);">
+                    <i class="fas fa-camera" style="font-size: 50px; color: var(--gold);"></i>
+                </div>
+
+                <!-- REPLACE THE HREF WITH YOUR URL -->
+                <a href="https://weduploader.com/upload/qJR8G6s5yiiFvYWR" target="_blank" class="gallery-btn">
+                    <i class="fas fa-upload"></i> UPLOAD PHOTOS
+                </a>
+                <p style="font-size: 0.6rem; margin-top: 15px; opacity: 0.4; letter-spacing: 1px;">DIRECT UPLOAD • NO APP REQUIRED</p>
+            </div>
+        </section>
+
+        <!-- SCENE 9: CLOSING -->
         <section class="scene">
             <div class="bg-video-sim" style="background-color: #000;"></div>
             <div class="title-reveal">
@@ -328,7 +352,7 @@
             if (music) {
                 music.play().then(() => {
                     mIcon.classList.replace('fa-play', 'fa-pause');
-                }).catch(e => console.log("Audio waiting..."));
+                }).catch(e => console.log("Audio play blocked."));
             }
         }
 
@@ -343,13 +367,17 @@
         }
 
         scrollerContainer.addEventListener('scroll', function() {
+            // Hides scroll indicator only on the very last scene (Scene 9)
             if (scrollerContainer.scrollHeight - scrollerContainer.scrollTop <= scrollerContainer.clientHeight + 50) {
                 scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
             } else {
                 scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.pointerEvents = 'auto';
             }
         });
 
+        // Mobile height fix
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
