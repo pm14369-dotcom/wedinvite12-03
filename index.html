@@ -175,14 +175,16 @@
 
     <div class="video-container" id="main-scroller">
         
-        <!-- SCENE 1: THE HERO -->
+        <!-- SCENE 1: THE HERO (Restored Photo & Explicit Date) -->
         <section class="scene active">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
             <div class="title-reveal">
                 <p style="letter-spacing: 8px; font-size: 0.65rem; margin-bottom: 10px; opacity: 0.9;">THE ROYAL WEDDING OF</p>
                 <h1 class="exclusive-name">Parth & Anveshi</h1>
-                <p style="font-family: 'Pinyon Script'; font-size: 2.8rem; color: #fff; margin-top: 10px;">12 • 03 • 2026</p>
+                <p style="font-family: 'Pinyon Script'; font-size: 2.8rem; color: var(--gold); margin-top: 10px;">12th March 2026</p>
+                <div style="width: 30px; height: 1px; background: #fff; margin: 15px auto; opacity: 0.5;"></div>
+                <p style="letter-spacing: 4px; font-size: 0.7rem; opacity: 0.8;">NEW DELHI</p>
             </div>
         </section>
 
@@ -194,7 +196,7 @@
                 <h2 style="font-family: 'Cinzel Decorative'; font-size: 2rem; color: #fff;">Divine Blessings</h2>
                 <div style="width: 40px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
                 <p style="font-style: italic; opacity: 0.8; line-height: 1.8; font-size: 0.95rem;">
-                    "With the grace of God and the blessings of our ancestors, we begin our beautiful journey of togetherness."
+                    "With the grace of God and the blessings of our ancestors, we begin our beautiful journey on the 12th of March."
                 </p>
             </div>
         </section>
@@ -247,13 +249,15 @@
             </div>
         </section>
 
-        <!-- SCENE 7: THE WEDDING -->
+        <!-- SCENE 7: THE WEDDING (Photo & Date & GHAROLI Time) -->
         <section class="scene">
             <div class="bg-video-sim" style="background-image: url('couple.JPG');"></div>
             <div class="overlay"></div>
             <div class="title-reveal scene-card" style="width: 92%;">
-                <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8rem; margin-bottom: 15px;">The Grand Wedding</h3>
+                <h3 style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 1.8rem; margin-bottom: 5px;">The Grand Wedding</h3>
+                <p style="letter-spacing: 2px; font-weight: 700; margin-bottom: 15px; color: #fff;">THURSDAY, MARCH 12</p>
                 
+                <!-- Morning Rituals -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
                     <div style="background: rgba(255,255,255,0.05); padding: 8px;">
                         <small style="color: var(--gold); font-size: 0.6rem; letter-spacing: 1px;">HALDI</small>
@@ -265,14 +269,17 @@
                     </div>
                 </div>
 
+                <!-- Evening Timings -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 15px; margin-bottom: 15px;">
                     <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">BARAT WELCOME</small><p style="font-size: 0.9rem; font-weight: 700;">7:00 PM</p></div>
                     <div><small style="color: var(--gold); font-size: 0.65rem; letter-spacing: 1px;">SHUBH VIVAH</small><p style="font-size: 0.9rem; font-weight: 700;">9:30 PM</p></div>
                 </div>
 
+                <!-- Vidaai -->
                 <p style="font-family: 'Pinyon Script'; font-size: 2.2rem; color: var(--gold);">Vidaai at 4:00 AM</p>
                 <p style="font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-bottom: 15px;">"Taroo ki chaw main"</p>
                 
+                <!-- Google Maps Link -->
                 <a href="https://www.google.com/maps/search/?api=1&query=Oodles+by+Bella+Monde+Chattarpur+New+Delhi" 
                    target="_blank" class="map-link">
                     <i class="fas fa-map-marker-alt"></i> OPEN GOOGLE MAPS
@@ -330,13 +337,12 @@
             else { music.pause(); mIcon.classList.replace('fa-pause', 'fa-play'); }
         }
 
-        // Permanent Scroll Logic (only hides on the very last scene)
+        // Permanent Scroll Logic
         function scrollToNextScene() {
             scrollerContainer.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
         }
 
         scrollerContainer.addEventListener('scroll', function() {
-            // Check if we are at the bottom of the scroller
             if (scrollerContainer.scrollHeight - scrollerContainer.scrollTop <= scrollerContainer.clientHeight + 50) {
                 scrollIndicator.style.opacity = '0';
             } else {
